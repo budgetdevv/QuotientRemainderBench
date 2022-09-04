@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DisassemblyDiagnoser Output Bench-20220904-225716</title>
+
+<style type="text/css">
+    table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+    td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: left; }
+    tr { background-color: #fff; border-top: 1px solid #ccc; }
+    tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<table>
+<thead>
+<tr><th colspan="2">Bench-20220904-225716</th></tr>
+<tr>
+<th>TrumpMcD .NET 7.0.0 (7.0.22.42212), X64 RyuJIT</th>
+<th>Spicy .NET 7.0.0 (7.0.22.42212), X64 RyuJIT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+Bench.TrumpMcD()
+sub       rsp,38
+xor       eax,eax
+mov       [rsp+30],rax
+mov       [rsp+28],rax
+lea       r8,[rsp+28]
+lea       rdx,[rsp+30]
+mov       ecx,7FFFFFFF
+call      qword ptr [7FFD4BBF5DF8]
+nop
+add       rsp,38
+ret
+
+Bench.TrumpMcDImpl(Int32, Int32 ByRef, Int32 ByRef)
+mov       r9,rdx
+mov       edx,66666667
+mov       eax,edx
+imul      ecx
+mov       eax,edx
+shr       eax,1F
+sar       edx,2
+add       eax,edx
+mov       [r9],eax
+mov       eax,[r9]
+lea       eax,[rax+rax*4]
+add       eax,eax
+sub       ecx,eax
+mov       [r8],ecx
+ret
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+Bench.Spicy()
+sub       rsp,38
+xor       eax,eax
+mov       [rsp+30],rax
+mov       [rsp+28],rax
+lea       r8,[rsp+28]
+lea       rdx,[rsp+30]
+mov       ecx,7FFFFFFF
+call      qword ptr [7FFD4BC15DC8]
+nop
+add       rsp,38
+ret
+
+Bench.SpicyImpl(Int32, Int32 ByRef, Int32 ByRef)
+mov       r9,rdx
+mov       edx,66666667
+mov       eax,edx
+imul      ecx
+mov       eax,edx
+shr       eax,1F
+sar       edx,2
+add       eax,edx
+lea       eax,[rax+rax*4]
+add       eax,eax
+mov       edx,ecx
+sub       edx,eax
+mov       [r8],edx
+mov       edx,ecx
+sub       edx,[r8]
+mov       ecx,66666667
+mov       eax,ecx
+imul      edx
+mov       eax,edx
+shr       eax,1F
+sar       edx,2
+add       eax,edx
+mov       [r9],eax
+ret
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
